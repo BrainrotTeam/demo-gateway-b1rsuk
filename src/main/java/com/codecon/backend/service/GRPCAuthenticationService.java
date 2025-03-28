@@ -5,7 +5,11 @@ import com.codecon.backend.model.dto.SignInDto;
 import com.codecon.backend.model.dto.SignUpDto;
 import com.codecon.backend.model.dto.TokenDto;
 import com.codecon.infrastructure.grpc.authentication.*;
-import com.google.protobuf.Empty;
+import com.codecon.infrastructure.grpc.authentication.ClientResponseDto;
+import com.codecon.infrastructure.grpc.authentication.SignInRequest;
+import com.codecon.infrastructure.grpc.authentication.SignUpRequest;
+import com.codecon.infrastructure.grpc.authentication.TokenRequest;
+import com.codecon.infrastructure.grpc.authentication.TokenResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import lombok.AccessLevel;
@@ -25,9 +29,10 @@ public class GRPCAuthenticationService {
         this.authenticationServiceStub = AuthenticationServiceGrpc.newBlockingStub(channel);
     }
 
-    public void signUp(SignUpDto signUpDto) {
-            SignUpRequest signUpRequest = signUpDto.toSignUpRequest();
-            authenticationServiceStub.signUp(signUpRequest);
+    public TokenDto signUp(SignUpDto signUpDto) {
+        SignUpRequest signUpRequest = signUpDto.toSignUpRequest();
+        TokenResponse tokenResponse = authenticationServiceStub.signUp(signUpRequest);
+        return TokenDto.of(tokenResponse);
     }
 
     public TokenDto signIn(SignInDto signInDto) {

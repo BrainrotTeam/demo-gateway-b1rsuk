@@ -6,15 +6,6 @@ spring:
       default-channel:
         health:
           enabled: false
-
-    server:
-      port: 9091
-  kafka:
-    bootstrap-servers: localhost:49092
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.UUIDSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-
   datasource:
     url: jdbc:postgresql://localhost:5432/backend
     username: postgres

@@ -1,18 +1,12 @@
 package com.codecon.backend.shared;
 
-import com.codecon.backend.service.GRPCAuthenticationService;
 import com.codecon.backend.shared.exception.CustomException;
-import com.codecon.infrastructure.grpc.authentication.SignUpRequest;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
-import jakarta.servlet.RequestDispatcher;
-import org.springframework.grpc.server.exception.GrpcExceptionHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.WebRequest;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
