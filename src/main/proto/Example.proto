@@ -13,8 +13,8 @@ message CreateExampleRequestDto {
 
 message UpdateExampleRequestDto {
   int64 id = 1;
-  int64 exampleLong = 2;
-  string exampleString = 3;
+  optional int64 exampleLong = 2;
+  optional string exampleString = 3;
 }
 
 message ExampleResponseDto {

@@ -5,6 +5,7 @@ import com.codecon.backend.shared.model.BaseModel;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.apache.logging.log4j.util.Strings;
 
 @Entity
 @Table
@@ -21,10 +22,7 @@ public class Example implements BaseModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    Long exampleLong;
-    String exampleString;
+    Long exampleLong = 0L;
+    String exampleString= Strings.EMPTY;
 
-    public ExampleDto toDto() {
-        return new ExampleDto(id, exampleLong, exampleString);
-    }
 }

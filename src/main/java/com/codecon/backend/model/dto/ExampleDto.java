@@ -6,6 +6,7 @@ import com.codecon.infrastructure.grpc.example.ExampleResponseDto;
 import com.codecon.infrastructure.grpc.example.UpdateExampleRequestDto;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.apache.logging.log4j.util.Strings;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -15,8 +16,8 @@ import lombok.experimental.FieldDefaults;
 public class ExampleDto {
 
     Long id;
-    Long exampleLong;
-    String exampleString;
+    Long exampleLong = 0L;
+    String exampleString = Strings.EMPTY;
 
     public static ExampleDto of(ExampleResponseDto exampleResponseDto) {
         return new ExampleDto(exampleResponseDto.getId(), exampleResponseDto.getExampleLong(), exampleResponseDto.getExampleString());
